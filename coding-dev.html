@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding & Development - Tech Blog</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #1a73e8;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Content Styles */
+        #coding-dev {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        #coding-dev h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #coding-dev > p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* GeeksforGeeks Articles (Tech News Style) */
+        .gfg-content {
+            margin-bottom: 40px;
+        }
+
+        .gfg-content h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        #gfg-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        #gfg-articles .article-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        #gfg-articles .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        #gfg-articles h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        #gfg-articles h3 a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #gfg-articles h3 a:hover {
+            text-decoration: underline;
+        }
+
+        #gfg-articles p {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .gfg-content > p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gfg-content > p a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .gfg-content > p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Curated Tutorials Section */
+        .gfg-tutorials {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gfg-tutorials h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 15px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .gfg-tutorials ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gfg-tutorials li {
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .gfg-tutorials li a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .gfg-tutorials li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            #coding-dev h1 {
+                font-size: 2em;
+            }
+
+            #coding-dev > p {
+                font-size: 1em;
+            }
+
+            .gfg-content h2, .gfg-tutorials h2 {
+                font-size: 1.5em;
+            }
+
+            #gfg-articles {
+                grid-template-columns: 1fr;
+            }
+
+            #gfg-articles .article-card {
+                padding: 15px;
+            }
+
+            #gfg-articles h3 {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .nav-links a {
+                font-size: 0.9em;
+            }
+
+            #coding-dev {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Tech Blog</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tech-news.html">Tech News</a></li>
+            <li><a href="coding-dev.html">Coding & Development</a></li>
+            <li><a href="ai-ml.html">AI & Machine Learning</a></li>
+            <li><a href="gadget-reviews.html">Gadget Reviews</a></li>
+            <li><a href="how-to.html">How-To Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="coding-dev">
+            <h1>Coding & Development</h1>
+            <p>Discover coding tips, tutorials, and the latest programming insights.</p>
+
+            <!-- GeeksforGeeks Integrated Content -->
+            <div class="gfg-content">
+                <h2>Latest from GeeksforGeeks</h2>
+                <div id="gfg-articles"></div>
+                <p><a href="https://www.geeksforgeeks.org/" target="_blank">Explore more on GeeksforGeeks</a></p>
+            </div>
+
+            <!-- Curated GeeksforGeeks Tutorials -->
+            <div class="gfg-tutorials">
+                <h2>Popular GeeksforGeeks Tutorials</h2>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-programming-language/" target="_blank">Python Programming Tutorial</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/java/" target="_blank">Java Programming Tutorial</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/javascript/" target="_blank">JavaScript Tutorial</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/data-structures/" target="_blank">Data Structures Tutorial</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/algorithms/" target="_blank">Algorithms Tutorial</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Tech Blog. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Fetching GeeksforGeeks RSS Feed -->
+    <script>
+        async function fetchGfgArticles() {
+            const rssUrl = 'https://www.geeksforgeeks.org/feed/';
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+            const articlesContainer = document.getElementById('gfg-articles');
+
+            try {
+                const response = await fetch(proxyUrl + encodeURIComponent(rssUrl));
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, 'application/xml');
+
+                const items = xmlDoc.querySelectorAll('item');
+                let html = '';
+                let count = 0;
+
+                for (let item of items) {
+                    if (count >= 5) break;
+                    const title = item.querySelector('title').textContent;
+                    const link = item.querySelector('link').textContent;
+                    const description = item.querySelector('description').textContent.slice(0, 100) + '...';
+
+                    html += `
+                        <div class="article-card">
+                            <h3><a href="${link}" target="_blank">${title}</a></h3>
+                            <p>${description}</p>
+                        </div>
+                    `;
+                    count++;
+                }
+
+                articlesContainer.innerHTML = html;
+            } catch (error) {
+                articlesContainer.innerHTML = '<p>Unable to load GeeksforGeeks articles at this time.</p>';
+                console.error('Error fetching GFG articles:', error);
+            }
+        }
+
+        window.onload = fetchGfgArticles;
+    </script>
+</body>
+</html>

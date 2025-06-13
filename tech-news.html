@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tech Blog - Vibrant AI and tech news, gadget purchases, and YouTube content.">
+    <title>AI & Tech News - Tech Blog</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #1a73e8;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8em;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        section > p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in 0.3s both;
+        }
+
+        /* News Section */
+        .tech-news h2,
+        .live-news h2,
+        .purchase-gadgets h2,
+        .youtube-section h2,
+        .comments h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-article {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .news-article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-article h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .news-article h3 a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .news-article h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .news-article p {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        /* Live News Section */
+        .live-news #news-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 200px;
+        }
+
+        .loader {
+            border: 6px solid #ddd;
+            border-top: 6px solid #1a73e8;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        /* Gadget Section */
+        .gadget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gadget-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .gadget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .gadget-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .gadget-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #1a73e8;
+        }
+
+        .gadget-card p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .gadget-card .buy-button {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .gadget-card .buy-button:hover {
+            background-color: #1557b0;
+        }
+
+        /* YouTube Section */
+        .youtube-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .youtube-section p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .youtube-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto 15px;
+        }
+
+        .youtube-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 6px;
+        }
+
+        .youtube-section .subscribe-button {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .youtube-section .subscribe-button:hover {
+            background-color: #1557b0;
+        }
+
+        /* Comment Section */
+        .comments {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+
+        .comment-form input:focus,
+        .comment-form textarea:focus {
+            border-color: #1a73e8;
+            outline: none;
+        }
+
+        .comment-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .comment-form button {
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: fit-content;
+        }
+
+        .comment-form button:hover {
+            background-color: #1557b0;
+        }
+
+        #comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .comment {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .comment:hover {
+            transform: translateY(-3px);
+        }
+
+        .comment .comment-author {
+            font-weight: 600;
+            color: #1a73e8;
+            font-size: 1.1em;
+        }
+
+        .comment .comment-date {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .comment p {
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            section > p {
+                font-size: 1em;
+            }
+
+            .tech-news h2,
+            .live-news h2,
+            .purchase-gadgets h2,
+            .youtube-section h2,
+            .comments h2 {
+                font-size: 1.5em;
+            }
+
+            .gadget-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .youtube-video {
+                padding-bottom: 75%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .nav-links a {
+                font-size: 0.9em;
+            }
+
+            main {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="logo">Tech Blog</div>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tech-news.html" class="active">Tech News</a></li>
+            <li><a href="coding-dev.html">Coding & Development</a></li>
+            <li><a href="ai-ml.html">AI & ML</a></li>
+            <li><a href="gadget-reviews.html">Gadget Reviews</a></li>
+            <li><a href="how-to.html">How-To Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Static News Section -->
+        <section class="tech-news" aria-labelledby="tech-news-title">
+            <h1 id="tech-news-title">ChatGPT & AI Tech Updates</h1>
+            <p>Stay informed with curated updates from OpenAI, Microsoft, Apple, and Google's Gemini.</p>
+            <div class="news-grid">
+                <article class="news-article">
+                    <h3><a href="#">OpenAI Releases ChatGPT-5</a></h3>
+                    <p><strong>April 25, 2025:</strong> OpenAI's newest model supports text, image, and audio input. Early testers highlight its improved reasoning and longer memory.</p>
+                </article>
+                <article class="news-article">
+                    <h3><a href="#">Apple Debuts “Apple Intelligence” at WWDC</a></h3>
+                    <p><strong>April 20, 2025:</strong> Apple introduces generative AI across devices, enhancing Siri and personal productivity tools with privacy-first features.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Live News Section -->
+        <section class="live-news" aria-labelledby="live-news-title">
+            <h2 id="live-news-title">🔴 Live AI & Tech News</h2>
+            <div id="news-container" class="loader">Loading latest news...</div>
+        </section>
+
+        <!-- Purchase Tech Gadgets Section -->
+        <section class="purchase-gadgets" aria-labelledby="gadgets-title">
+            <h2 id="gadgets-title">Purchase Tech Gadgets</h2>
+            <div class="gadget-grid">
+                <div class="gadget-card">
+                    <img src="https://images.pexels.com/photos/7974/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Smartphone">
+                    <h3>Latest Smartphone</h3>
+                    <p>High-performance smartphone with advanced camera and 5G support.</p>
+                    <a href="https://example.com/buy-smartphone" class="buy-button">Buy Now</a>
+                </div>
+                <div class="gadget-card">
+                    <img src="https://images.pexels.com/photos/5054218/pexels-photo-5054218.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Wireless Earbuds">
+                    <h3>Wireless Earbuds</h3>
+                    <p>Crystal-clear audio with noise cancellation and long battery life.</p>
+                    <a href="https://example.com/buy-earbuds" class="buy-button">Buy Now</a>
+                </div>
+                <div class="gadget-card">
+                    <img src="https://images.pexels.com/photos/3783471/pexels-photo-3783471.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Smartwatch">
+                    <h3>Smartwatch Pro</h3>
+                    <p>Track fitness, notifications, and more with this sleek smartwatch.</p>
+                    <a href="https://example.com/buy-smartwatch" class="buy-button">Buy Now</a>
+                </div>
+                <div class="gadget-card">
+                    <img src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Gaming Laptop">
+                    <h3>Gaming Laptop</h3>
+                    <p>High-speed performance for gaming and productivity.</p>
+                    <a href="https://example.com/buy-laptop" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Blog on YouTube Section -->
+        <section class="youtube-section" aria-labelledby="youtube-title">
+            <h2 id="youtube-title">Tech Blog on YouTube</h2>
+            <p>Watch our latest tech reviews, tutorials, and more on our YouTube channel!</p>
+            <div class="youtube-video">
+                <iframe src="https://www.youtube.com/embed/jGztGfRujSE?si=wG8FBR3fkyxSPJ8F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <a href="https://www.youtube.com/channel/example-channel" class="subscribe-button">Subscribe on YouTube</a>
+        </section>
+
+        <!-- Reader Comments Section -->
+        <section class="comments" aria-labelledby="comments-title">
+            <h2 id="comments-title">💬 Leave a Comment</h2>
+            <form class="comment-form" onsubmit="submitComment(event)">
+                <input type="text" placeholder="Your Name" name="name" required aria-label="Your Name">
+                <input type="email" placeholder="Your Email" name="email" required aria-label="Your Email">
+                <textarea placeholder="Write your comment..." name="comment" required aria-label="Your Comment"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="comment-list"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>© 2025 Tech Blog. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        const apiKey = '40113718e57243bf8aaf73b6b7af08d7';
+        const query = 'OpenAI OR ChatGPT OR Microsoft OR Apple OR Google Gemini';
+        const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=en&sortBy=publishedAt&pageSize=6&apiKey=${apiKey}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('news-container');
+                container.classList.remove('loader');
+                container.innerHTML = '';
+
+                if (!data.articles || data.articles.length === 0) {
+                    container.innerHTML = '<p>No recent articles found.</p>';
+                    return;
+                }
+
+                data.articles.forEach((article, index) => {
+                    const newsItem = document.createElement('article');
+                    newsItem.classList.add('news-article');
+                    newsItem.style.animationDelay = `${index * 0.1}s`;
+                    newsItem.innerHTML = `
+                        <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+                        <p><strong>${new Date(article.publishedAt).toLocaleDateString()}</strong> – ${article.description || 'No description available.'}</p>
+                    `;
+                    container.appendChild(newsItem);
+                });
+            })
+            .catch(error => {
+                const container = document.getElementById('news-container');
+                container.classList.remove('loader');
+                container.innerHTML = '<p>Error loading live news. Please try again later.</p>';
+                console.error('News API Error:', error);
+            });
+
+        function submitComment(event) {
+            event.preventDefault();
+            const name = event.target.name.value.trim();
+            const email = event.target.email.value.trim();
+            const comment = event.target.comment.value.trim();
+
+            if (name && email && comment) {
+                const commentList = document.getElementById('comment-list');
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.innerHTML = `
+                    <p class="comment-author">${name}</p>
+                    <p class="comment-date">${new Date().toLocaleString()}</p>
+                    <p>${comment}</p>
+                `;
+                commentList.prepend(commentDiv);
+                event.target.reset();
+            }
+        }
+    </script>
+</body>
+</html>

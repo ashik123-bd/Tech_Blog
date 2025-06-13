@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Tech Blog - Your source for tech news, coding, AI, gadget reviews, and how-to guides.">
+    <title>Home - The Tech Blog</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="logo">
+            <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=200" alt="The Tech Blog Logo">
+        </div>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tech-news.html">Tech News</a></li>
+            <li><a href="coding-dev.html">Coding & Development</a></li>
+            <li><a href="ai-ml.html">AI & ML</a></li>
+            <li><a href="gadget-reviews.html">Gadget Reviews</a></li>
+            <li><a href="how-to.html">How-To Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Welcome to The Tech Blog</h1>
+        <p>Explore the latest in tech news, coding tutorials, AI advancements, gadget reviews, and how-to guides.</p>
+        <a href="about.html" class="cta-button">Get Started</a>
+    </section>
+
+    <!-- Category Section -->
+    <section class="category-container" aria-labelledby="categories-title">
+        <h2 id="categories-title" style="display: none;">Blog Categories</h2>
+        <div class="category">
+            <a href="tech-news.html" aria-label="Read Tech News">
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Tech News">
+                    <p>Tech News</p>
+                </div>
+            </a>
+        </div>
+        <div class="category">
+            <a href="coding-dev.html" aria-label="Explore Coding & Development">
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Coding & Development">
+                    <p>Coding & Development</p>
+                </div>
+            </a>
+        </div>
+        <div class="category">
+            <a href="ai-ml.html" aria-label="Learn about AI & Machine Learning">
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=500" alt="AI & Machine Learning">
+                    <p>AI & Machine Learning</p>
+                </div>
+            </a>
+        </div>
+        <div class="category">
+            <a href="gadget-reviews.html" aria-label="Check Gadget Reviews">
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Gadget Reviews">
+                    <p>Gadget Reviews</p>
+                </div>
+            </a>
+        </div>
+        <div class="category">
+            <a href="how-to.html" aria-label="View How-To Guides">
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=500" alt="How-To Guides">
+                    <p>How-To Guides</p>
+                </div>
+            </a>
+        </div>
+        <div class="category">
+            <a href="about.html" aria-label="Learn About Us">
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=500" alt="About Us">
+                    <p>About Us</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" aria-labelledby="newsletter-title">
+        <h2 id="newsletter-title">Join Our Newsletter</h2>
+        <p>Stay updated with the latest tech insights and updates.</p>
+        <form onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" placeholder="Enter your email" aria-label="Email for newsletter" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>© 2025 The Tech Blog. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://twitter.com" aria-label="Follow us on Twitter">Twitter</a>
+            <a href="https://facebook.com" aria-label="Follow us on Facebook">Facebook</a>
+            <a href="https://linkedin.com" aria-label="Follow us on LinkedIn">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

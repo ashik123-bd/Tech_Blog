@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Machine Learning - Tech Blog</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #1a73e8;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Content Styles */
+        #ai-ml {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        #ai-ml h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        #ai-ml > p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in 0.3s both;
+        }
+
+        /* AI Gadget Reviews Section */
+        .ai-gadgets {
+            margin-bottom: 40px;
+        }
+
+        .ai-gadgets h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .gadgets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gadget-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .gadget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .gadget-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .gadget-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .gadget-card h3 a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .gadget-card h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .gadget-card p {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .gadget-card .source {
+            font-size: 0.85em;
+            color: #999;
+            font-style: italic;
+        }
+
+        .ai-gadgets > p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .ai-gadgets > p a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .ai-gadgets > p a:hover {
+            text-decoration: underline;
+        }
+
+        /* AI Resources Section */
+        .ai-resources {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s ease-in 0.2s both;
+        }
+
+        .ai-resources h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 15px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .ai-resources ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ai-resources li {
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .ai-resources li a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .ai-resources li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            #ai-ml h1 {
+                font-size: 2em;
+            }
+
+            #ai-ml > p {
+                font-size: 1em;
+            }
+
+            .ai-gadgets h2, .ai-resources h2 {
+                font-size: 1.5em;
+            }
+
+            .gadgets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gadget-card {
+                padding: 15px;
+            }
+
+            .gadget-card h3 {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .nav-links a {
+                font-size: 0.9em;
+            }
+
+            #ai-ml {
+                padding: 0 10px;
+            }
+
+            .gadget-card img {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Tech Blog</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tech-news.html">Tech News</a></li>
+            <li><a href="coding-dev.html">Coding & Development</a></li>
+            <li><a href="ai-ml.html">AI & Machine Learning</a></li>
+            <li><a href="gadget-reviews.html">Gadget Reviews</a></li>
+            <li><a href="how-to.html">How-To Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="ai-ml">
+            <h1>AI & Machine Learning</h1>
+            <p>Explore cutting-edge AI gadgets and resources shaping the future of artificial intelligence.</p>
+
+            <!-- AI Gadget Reviews Section -->
+            <div class="ai-gadgets">
+                <h2>Latest AI Gadget Reviews</h2>
+                <div class="gadgets-grid">
+                    <div class="gadget-card">
+                        <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Humane AI Pin">
+                        <h3><a href="https://www.humane.com/ai-pin" target="_blank">Humane AI Pin</a></h3>
+                        <p>A wearable AI device that projects a user interface onto surfaces, offering voice-activated tasks like messaging and reminders. Critics note its innovative design but mixed reviews on reliability. Priced at $699 with a $24/month plan.</p>
+                        <span class="source">Source: ABC News</span>
+                    </div>
+                    <div class="gadget-card">
+                        <img src="https://images.pexels.com/photos/8386366/pexels-photo-8386366.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Rabbit R1">
+                        <h3><a href="https://www.rabbit.tech/r1" target="_blank">Rabbit R1</a></h3>
+                        <p>A compact, orange AI assistant with a 2.88-inch screen, designed to simplify smartphone tasks via voice commands. Early adopters praise its potential, but some report inconsistent performance.</p>
+                        <span class="source">Source: ABC News</span>
+                    </div>
+                    <div class="gadget-card">
+                        <img src="https://images.pexels.com/photos/8386438/pexels-photo-8386438.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Samsung Ballie">
+                        <h3><a href="https://www.samsung.com/us/explore/ballie/" target="_blank">Samsung Ballie with Projector</a></h3>
+                        <p>A roving smart home hub with a projector, syncing with appliances and streaming live feeds. Showcased at CES 2024, it’s a versatile AI companion for smart homes.</p>
+                        <span class="source">Source: The Hindu</span>
+                    </div>
+                    <div class="gadget-card">
+                        <img src="https://images.pexels.com/photos/8386442/pexels-photo-8386442.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Capella Baby Cry Translator">
+                        <h3><a href="https://www.cappella.ai/" target="_blank">Capella Baby Cry Translator</a></h3>
+                        <p>An AI-powered app that translates infant cries to identify needs, aiding parents with real-time insights. Highlighted at CES 2024 for its practical use in childcare.</p>
+                        <span class="source">Source: The Hindu</span>
+                    </div>
+                    <div class="gadget-card">
+                        <img src="https://images.pexels.com/photos/8386441/pexels-photo-8386441.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Limitless Pendant">
+                        <h3><a href="https://www.analyticsvidhya.com/blog/2025/05/top-5-ai-devices-to-use-in-2025/" target="_blank">Limitless Pendant</a></h3>
+                        <p>A stylish wearable AI device offering personalized assistance and real-time navigation overlays, blending fashion with functionality.</p>
+                        <span class="source">Source: Analytics Vidhya</span>
+                    </div>
+                </div>
+                <p><a href="https://www.tomsguide.com/news/toms-guide-ai-awards-2025-17-best-ai-tools-and-gadgets-right-now" target="_blank">Discover more AI gadgets on Tom's Guide</a></p>
+            </div>
+
+            <!-- AI Resources Section -->
+            <div class="ai-resources">
+                <h2>Featured AI & ML Resources</h2>
+                <ul>
+                    <li><a href="https://www.coursera.org/learn/machine-learning" target="_blank">Machine Learning by Stanford on Coursera</a></li>
+                    <li><a href="https://www.deeplearning.ai/courses/" target="_blank">DeepLearning.AI Courses</a></li>
+                    <li><a href="https://www.tensorflow.org/tutorials" target="_blank">TensorFlow Tutorials</a></li>
+                    <li><a href="https://pytorch.org/tutorials/" target="_blank">PyTorch Tutorials</a></li>
+                    <li><a href="https://www.fast.ai/" target="_blank">Fast.ai Practical Deep Learning</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Tech Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>

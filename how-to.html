@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How-To Guides - Tech Blog</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #1a73e8;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Content Styles */
+        #how-to {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        #how-to h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        #how-to > p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in 0.3s both;
+        }
+
+        /* How-To Guides Section */
+        .how-to-guides {
+            margin-bottom: 40px;
+        }
+
+        .how-to-guides h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .guide-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .guide-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .guide-card h3 a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .guide-card h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .guide-card p {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .guide-card .source {
+            font-size: 0.85em;
+            color: #999;
+            font-style: italic;
+        }
+
+        .how-to-guides > p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .how-to-guides > p a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .how-to-guides > p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tech Resources Section */
+        .tech-resources {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s ease-in 0.2s both;
+        }
+
+        .tech-resources h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 15px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .tech-resources ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-resources li {
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .tech-resources li a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .tech-resources li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            #how-to h1 {
+                font-size: 2em;
+            }
+
+            #how-to > p {
+                font-size: 1em;
+            }
+
+            .how-to-guides h2, .tech-resources h2 {
+                font-size: 1.5em;
+            }
+
+            .guides-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-card {
+                padding: 15px;
+            }
+
+            .guide-card h3 {
+                font-size: 1.2em;
+            }
+
+            .guide-card img {
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .nav-links a {
+                font-size: 0.9em;
+            }
+
+            #how-to {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Tech Blog</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tech-news.html">Tech News</a></li>
+            <li><a href="coding-dev.html">Coding & Development</a></li>
+            <li><a href="ai-ml.html">AI & Machine Learning</a></li>
+            <li><a href="gadget-reviews.html">Gadget Reviews</a></li>
+            <li><a href="how-to.html">How-To Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="how-to">
+            <h1>How-To Guides</h1>
+            <p>Step-by-step tutorials for tech enthusiasts from top Bangladeshi tech communities.</p>
+
+            <!-- Tech How-To Guides Section -->
+            <div class="how-to-guides">
+                <h2>Tech How-To Guides</h2>
+                <div class="guides-grid">
+                    <div class="guide-card">
+                        <img src="https://images.pexels.com/photos/7974/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Viber Unlimited Minutes">
+                        <h3><a href="https://techtuneff.blogspot.com/2021/08/techtunesbdcom.html" target="_blank">How to Use Viber for Unlimited Calls</a></h3>
+                        <p>Learn how to make unlimited calls to any number using the Viber app, even from a button mobile, with this step-by-step guide.</p>
+                        <span class="source">Source: Techtunesbd</span>
+                    </div>
+                    <div class="guide-card">
+                        <img src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Facebook Likes">
+                        <h3><a href="https://techtuneff.blogspot.com/2021/08/techtunesbdcom.html" target="_blank">How to Get Unlimited Likes on Facebook Posts</a></h3>
+                        <p>Discover a safe method to boost likes on your Facebook posts without risking your account, detailed in this tutorial.</p>
+                        <span class="source">Source: Techtunesbd</span>
+                    </div>
+                    <div class="guide-card">
+                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Python While Loop">
+                        <h3><a href="https://www.techtunes.io/" target="_blank">How to Use While Loops in Python</a></h3>
+                        <p>A beginner-friendly guide to mastering while loops in Python, covering practical examples for programming enthusiasts.</p>
+                        <span class="source">Source: Techtunes</span>
+                    </div>
+                    <div class="guide-card">
+                        <img src="https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Android GridView">
+                        <h3><a href="https://www.techtunes.io/" target="_blank">How to Use GridView in Android Development</a></h3>
+                        <p>Step-by-step tutorial on implementing the GridView class in Android for creating dynamic layouts in your apps.</p>
+                        <span class="source">Source: Techtunes</span>
+                    </div>
+                    <div class="guide-card">
+                        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Online Earning">
+                        <h3><a href="https://www.techtunes.io/" target="_blank">How to Earn Online: Choosing the Right Path</a></h3>
+                        <p>Explore different online earning methods and find the best approach for your website or skills in this detailed guide.</p>
+                        <span class="source">Source: Techtunes</span>
+                    </div>
+                </div>
+                <p>
+                    <a href="https://www.techtunes.io/" target="_blank">Explore more tutorials on Techtunes</a> | 
+                    <a href="https://trickbd.com/" target="_blank">Discover more guides on Trickbd</a>
+                </p>
+            </div>
+
+            <!-- Tech Resources Section -->
+            <div class="tech-resources">
+                <h2>Featured Tech Resources</h2>
+                <ul>
+                    <li><a href="https://www.digitaltrends.com/computing/" target="_blank">Digital Trends Tech Tutorials</a></li>
+                    <li><a href="https://www.technobezz.com/" target="_blank">Technobezz How-To Guides</a></li>
+                    <li><a href="https://techguide.org/" target="_blank">TechGuide Career and Certification Guides</a></li>
+                    <li><a href="https://www.youtube.com/c/TechGuides" target="_blank">TechGuides YouTube Tutorials</a></li>
+                    <li><a href="https://support.tryrook.io/hc/en-us" target="_blank">Rook Tech Documentation</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Tech Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>

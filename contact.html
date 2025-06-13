@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Tech Blog</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #1a73e8;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Content Styles */
+        #contact {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        #contact h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        #contact > p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in 0.3s both;
+        }
+
+        /* Contact Us Section */
+        .contact-us {
+            margin-bottom: 40px;
+        }
+
+        .contact-us h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-form-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .contact-info-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            animation: fadeInUp 0.5s ease-in 0.2s both;
+        }
+
+        .contact-form-card h3, .contact-info-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #1a73e8;
+        }
+
+        .contact-form-card form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form-card label {
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .contact-form-card input,
+        .contact-form-card textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form-card input:focus,
+        .contact-form-card textarea:focus {
+            border-color: #1a73e8;
+            outline: none;
+        }
+
+        .contact-form-card textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form-card button {
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form-card button:hover {
+            background-color: #1557b0;
+        }
+
+        .error {
+            color: #d32f2f;
+            font-size: 0.85em;
+            margin-top: -10px;
+            display: none;
+        }
+
+        .input-error {
+            border-color: #d32f2f !important;
+        }
+
+        .contact-info-card p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .contact-info-card a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .contact-info-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Developer Contact Section */
+        .developer-contact {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            animation: fadeInUp 0.5s ease-in 0.4s both;
+        }
+
+        .developer-contact h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .developer-contact h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #1a73e8;
+        }
+
+        .developer-contact p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .developer-contact a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .developer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            #contact h1 {
+                font-size: 2em;
+            }
+
+            #contact > p {
+                font-size: 1em;
+            }
+
+            .contact-us h2, .developer-contact h2 {
+                font-size: 1.5em;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-card,
+            .contact-info-card {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .nav-links a {
+                font-size: 0.9em;
+            }
+
+            #contact {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Tech Blog</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tech-news.html">Tech News</a></li>
+            <li><a href="coding-dev.html">Coding & Development</a></li>
+            <li><a href="ai-ml.html">AI & Machine Learning</a></li>
+            <li><a href="gadget-reviews.html">Gadget Reviews</a></li>
+            <li><a href="how-to.html">How-To Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="contact">
+            <h1>Contact</h1>
+            <p>Get in touch with us for inquiries, feedback, or collaboration opportunities.</p>
+
+            <!-- Contact Us Section -->
+            <div class="contact-us">
+                <h2>Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-form-card">
+                        <h3>Send Us a Message</h3>
+                        <form id="contact-form" onsubmit="return validateForm(event)">
+                            <div>
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name">
+                                <span class="error" id="name-error">Name is required (min 2 characters).</span>
+                            </div>
+                            <div>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Your Email">
+                                <span class="error" id="email-error">Valid email is required.</span>
+                            </div>
+                            <div>
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="Subject">
+                                <span class="error" id="subject-error">Subject is required (min 5 characters).</span>
+                            </div>
+                            <div>
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Your Message"></textarea>
+                                <span class="error" id="message-error">Message is required (min 10 characters).</span>
+                            </div>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="contact-info-card">
+                        <h3>General Contact Info</h3>
+                        <p><strong>Email:</strong> <a href="mailto:contact@techblog.com">contact@techblog.com</a></p>
+                        <p><strong>Support Hours:</strong> Monday–Friday, 9 AM–5 PM (BST)</p>
+                        <p><strong>Follow Us:</strong></p>
+                        <p>
+                            <a href="https://www.linkedin.com/company/techblog" target="_blank">LinkedIn</a> | 
+                            <a href="https://twitter.com/techblog" target="_blank">Twitter</a> | 
+                            <a href="https://www.youtube.com/techblog" target="_blank">YouTube</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Developer Contact Section -->
+            <div class="developer-contact">
+                <h2>Developer Contact</h2>
+                <h3>MD Ashik Ahmmed</h3>
+                <p><strong>Location:</strong> Rajshahi, Bangladesh</p>
+                <p><strong>Phone:</strong> +8801763666454</p>
+                <p><strong>Email:</strong> <a href="mailto:ashikahamed86@gmail.com">ashikahamed86@gmail.com</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ashik9840" target="_blank">linkedin.com/in/ashik9840</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Tech Blog. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Form Validation -->
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            // Reset errors
+            document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
+            document.querySelectorAll('input, textarea').forEach(input => input.classList.remove('input-error'));
+
+            // Name validation
+            const name = document.getElementById('name').value.trim();
+            if (name.length < 2) {
+                document.getElementById('name-error').style.display = 'block';
+                document.getElementById('name').classList.add('input-error');
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').style.display = 'block';
+                document.getElementById('email').classList.add('input-error');
+                isValid = false;
+            }
+
+            // Subject validation
+            const subject = document.getElementById('subject').value.trim();
+            if (subject.length < 5) {
+                document.getElementById('subject-error').style.display = 'block';
+                document.getElementById('subject').classList.add('input-error');
+                isValid = false;
+            }
+
+            // Message validation
+            const message = document.getElementById('message').value.trim();
+            if (message.length < 10) {
+                document.getElementById('message-error').style.display = 'block';
+                document.getElementById('message').classList.add('input-error');
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!'); // Placeholder for actual submission
+                document.getElementById('contact-form').reset();
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>

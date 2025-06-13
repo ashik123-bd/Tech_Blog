@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Tech Blog</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #1a73e8;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Content Styles */
+        #about {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        #about h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        #about > p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in 0.3s both;
+        }
+
+        /* About Tech Blog Section */
+        .about-tech-hub {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .about-tech-hub h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 15px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .about-tech-hub p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Our Sections Section */
+        .our-sections {
+            margin-bottom: 40px;
+        }
+
+        .our-sections h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.5s ease-in both;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .section-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .section-card h3 a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .section-card h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .section-card p {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            #about h1 {
+                font-size: 2em;
+            }
+
+            #about > p {
+                font-size: 1em;
+            }
+
+            .about-tech-hub h2, .our-sections h2 {
+                font-size: 1.5em;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-card {
+                padding: 15px;
+            }
+
+            .section-card h3 {
+                font-size: 1.2em;
+            }
+
+            .section-card img {
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .nav-links a {
+                font-size: 0.9em;
+            }
+
+            #about {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Tech Blog</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tech-news.html">Tech News</a></li>
+            <li><a href="coding-dev.html">Coding & Development</a></li>
+            <li><a href="ai-ml.html">AI & Machine Learning</a></li>
+            <li><a href="gadget-reviews.html">Gadget Reviews</a></li>
+            <li><a href="how-to.html">How-To Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="about">
+            <h1>About Tech Blog</h1>
+            <p>Your ultimate destination for the latest in technology, AI, machine learning, software development, and more.</p>
+
+            <!-- About Tech Blog Section -->
+            <div class="about-tech-hub">
+                <h2>Welcome to Tech Blog</h2>
+                <p>Tech Blog is a vibrant platform dedicated to empowering tech enthusiasts, developers, and innovators with cutting-edge insights and practical resources. Our mission is to simplify complex technologies and make them accessible to everyone, from beginners to seasoned professionals.</p>
+                <p>We provide comprehensive guides, tutorials, and updates across a range of topics, including coding, artificial intelligence, gadget reviews, and step-by-step how-to guides. Whether you're looking to master a new programming language, explore AI-powered devices, or stay updated with the latest tech trends, Tech Blog is your go-to resource.</p>
+                <p>Our goal is to foster a global tech community by delivering high-quality content that inspires learning, innovation, and collaboration.</p>
+            </div>
+
+            <!-- Our Sections Section -->
+            <div class="our-sections">
+                <h2>Explore Our Sections</h2>
+                <div class="sections-grid">
+                    <div class="section-card">
+                        <img src="https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Tech News">
+                        <h3><a href="tech-news.html">Tech News</a></h3>
+                        <p>Stay updated with the latest breakthroughs and trends in the tech world, from AI advancements to industry updates.</p>
+                    </div>
+                    <div class="section-card">
+                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Coding & Development">
+                        <h3><a href="coding-dev.html">Coding & Development</a></h3>
+                        <p>Learn coding tips, tricks, and best practices with tutorials from leading platforms like GeeksforGeeks.</p>
+                    </div>
+                    <div class="section-card">
+                        <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="AI & Machine Learning">
+                        <h3><a href="ai-ml.html">AI & Machine Learning</a></h3>
+                        <p>Explore AI gadgets, research insights, and resources to dive into the future of artificial intelligence.</p>
+                    </div>
+                    <div class="section-card">
+                        <img src="https://images.pexels.com/photos/7974/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="Gadget Reviews">
+                        <h3><a href="gadget-reviews.html">Gadget Reviews</a></h3>
+                        <p>Discover in-depth reviews of the latest AI-powered devices and tech gadgets shaping the market.</p>
+                    </div>
+                    <div class="section-card">
+                        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=300&h=150&fit=crop" alt="How-To Guides">
+                        <h3><a href="how-to.html">How-To Guides</a></h3>
+                        <p>Master new skills with step-by-step tutorials from top tech communities like Techtunes and Trickbd.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Tech Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>
